@@ -62,8 +62,49 @@ fn ownership2()
   let s2 = take_and_giveback(str);
 }
 
+fn borrow_value1(value:&String) 
+{
+  print!(" value is {}", value); 
+}
+
+fn borrow_value2(value: &mut String)
+{
+  *value = String::from("value2");
+   print!(" value is {}", value);
+}
+
+// fn borrow_value3()
+// {
+
+// }
+
+// fn borrow_value4()
+// {
+
+// }
+
+fn borrow_nomut()
+{
+  let value = String::from("value1");
+
+  borrow_value1(&value);
+  print!("after borrow is {}", value);
+
+}
+
+fn borrow_mut()
+{
+  let mut value = String::from("value1");
+
+  borrow_value2(&mut value);
+  print!("after borrow is {}", value);
+}
+
+
 fn main()
 {
   ownership1();
   ownership2();
+  borrow_nomut();
+  borrow_mut();
 }
